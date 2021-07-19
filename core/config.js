@@ -39,13 +39,13 @@ const test = {
   },
   db: {
     name: `${process.env.DB_NAME || DEFAULT_DB_NAME}-${TEST_KEY}`,
-    host: process.env.DB_HOST,
+    host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
   },
   rpc: {
-    port: DEFAULT_RPC_PORT
+    port: process.env.RPC_PORT || DEFAULT_RPC_PORT
   }
 };
 
@@ -63,7 +63,7 @@ const prod = {
     password: process.env.DB_PASSWORD,
   },
   rpc: {
-    port: DEFAULT_RPC_PORT
+    port: process.env.RPC_PORT || DEFAULT_RPC_PORT
   }
 };
 
