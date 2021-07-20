@@ -5,7 +5,7 @@ let Product = require('../interface/commons/models/product');
 let chai = require('chai');
 let should = chai.should();
 
-const rpcProductClient = require("./util/rpc-clients").porductClient;
+const rpcProductClient = require("./util/rpc-clients").getProductClient(8001);
 
 
 describe('products', () => {
@@ -32,7 +32,7 @@ describe('products', () => {
                         productName: prodt.productName
                     },
                     (error, res) => {
-                        chai.assert.isDefined(res);
+                        chai.assert.isDefined(res); 
                         chai.assert(res.status, "status is not true");
                         chai.assert.equal(res.product.productName, prodt.productName);
                         done();

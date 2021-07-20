@@ -14,7 +14,14 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
 const ProductService = grpc.loadPackageDefinition(packageDefinition).ProductService;
 
-module.exports.porductClient = new ProductService(
+module.exports.productClient = new ProductService(
     `localhost:${process.env.RPC_PORT}`,
     grpc.credentials.createInsecure()
 );
+
+module.exports.getProductClient = (port) => {
+    return new ProductService(
+        `localhost:${port || process.env.RPC_PORT}`,
+        grpc.credentials.createInsecure()
+    );
+}
